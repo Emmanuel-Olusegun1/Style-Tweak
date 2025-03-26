@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Tweak</title>
+    <style>
+:root {
+    --base: #ffc600;
+    --spacing: 10px;
+    --blur: 10px;  
+}
+
+/* Image Styling */
+img {
+    padding: var(--spacing);
+    background: var(--base);
+    filter: blur(var(--blur));
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Highlight Text */
+.hl {
+    color: var(--base);
+    border-radius: 15px;
+}
+
+/* Body Styling */
+body {
+    font-family: 'helvetica neue', sans-serif;
+    font-size: 20px;
+    font-weight: 100;
+    background: #42be00;
+    color: white;
+    text-align: center;
+    width: 100vw;
+    height: auto;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Controls Container */
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    background: rgba(25, 53, 73, 0.8);
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    margin: 20px auto;
+}
+
+/* Labels */
+.controls label {
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    text-align: left;
+    width: 100%;
+}
+
+/* Input Elements */
+.controls input[type="range"],
+.controls input[type="color"],
+.controls select {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+}
+
+/* Range Inputs */
+.controls input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: var(--base);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Range Thumb */
+.controls input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 2px solid var(--base);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Color Picker */
+.controls input[type="color"] {
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Select Dropdown */
+.controls select {
+    appearance: none;
+    background-color: #193549;
+    color: white;
+    border: 2px solid var(--base);
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Dropdown Hover & Focus */
+select:hover {
+    background-color: #1f4a5f;
+}
+
+select:focus {
+    border-color: #ffc600;
+}
+
+/* Dropdown Options */
+.controls option {
+    background-color: var(--base);
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    .controls label {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .controls input[type="range"],
+    .controls input[type="color"],
+    .controls select {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    img {
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+
+    .controls {
+        padding: 15px;
+    }
+
+    .controls input[type="range"],
+    .controls select {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .controls input[type="color"] {
+        width: 35px;
+        height: 35px;
+    }
+
+    img {
+        max-width: 85vw;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+    <div class="controls">
+        <label for="spacing">Spacing:</label>
+        <input type="range" name="spacing" min="10" max="200" value="10" data-sizing="px">
+  
+        <label for="blur">Blur:</label>
+        <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+        <label for="base">Base Color:</label>
+        <input type="color" name="base" value="#ffc600">
+
+        <label for="image">Choose Image:</label>
+        <select id="image-selector">
+            <option value="img.png">Image 1</option>
+            <option value="img1.png">Image 2</option>
+            <option value="img2.png">Image 3</option>
+        </select>
+    </div>
+
+    <img id="image" src="img.png" alt="">
+
+    <script src="index.js"></script>
+    </body>
+    </html>
